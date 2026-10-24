@@ -1,0 +1,12 @@
+This project includes material adapted from:
+
+instagram-agent-skill
+https://github.com/Jakeschincariol/instagram-agent-skill
+Copyright (c) Jake Schincariol
+Licensed under the MIT License.
+
+Adapted portions: the hook formula library (skills/*/references/hooks.md) is
+based on skills/ig-reel/hooks.json from that project, rewritten in Hebrew and
+merged from 26 to 22 formulas. Carousel structure guidance in viral-script and
+the profile-conversion check in my-content-audit draw on ideas from its
+ig-carousel and ig-audit skills.

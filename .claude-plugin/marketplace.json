@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "viral-instagram",
+  "description": "Instagram research and content skills for Claude, Hebrew first",
+  "owner": { "name": "Almog Fishler", "url": "https://fishlerai.com" },
+  "plugins": [
+    {
+      "name": "viral-instagram",
+      "description": "Audit your reels and carousels, research your niche, build a playbook, write scripts in your voice, weekly trend alerts.",
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/almog-ship-it/viral-instagram"
+    }
+  ]
+}
