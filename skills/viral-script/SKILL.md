@@ -10,7 +10,7 @@ Write content the user can produce today and say out loud without rewriting. Eac
 ## Preflight
 
 1. Read `viral-instagram/profile.md` (especially Voice, My positions, Proof I can use) and `viral-instagram/playbook.md`. No playbook → say the drafts will rest on the hook library only, offer to build the playbook first, and continue only if the user wants to.
-2. Get the topic and the format (reel or carousel). If the format is not given, recommend one: carousel when the idea has steps or needs re-reading (a framework, a checklist, before/after); reel when it needs motion, a face or a payoff seen happening. One single claim → reel. If the user has no topic, offer 3 from the playbook's "To test next", the user's positions, and the latest file in `viral-instagram/trends/`.
+2. Get the topic and the format (reel or carousel). When `AskUserQuestion` is available, ask what is missing through it: the format as a choice (רילז / קרוסלה, the recommended one first), and when there is no topic, the 3 suggested topics as options (the free-text field takes the user's own). Otherwise ask in chat. If the format is not given, recommend one: carousel when the idea has steps or needs re-reading (a framework, a checklist, before/after); reel when it needs motion, a face or a payoff seen happening. One single claim → reel. If the user has no topic, offer 3 from the playbook's "To test next", the user's positions, and the latest file in `viral-instagram/trends/`.
 3. If the idea is thin, ask one batched question before writing: what happened, to whom, and what did it cost or return. A post needs one specific true thing.
 
 ## Reel: 3 scripts
@@ -84,7 +84,7 @@ Run every draft through these. A draft that fails a gate is rewritten before it 
 | promise kept | the hook's promise is delivered before the halfway point |
 | one ask | exactly one CTA |
 
-Then show a table: draft · hook id · gates passed · which playbook evidence backs it ("proven for you" beats "proven in niche"). Recommend one, and give one change that would make it stronger.
+Then show a table: draft · hook id · gates passed · which playbook evidence backs it ("proven for you" beats "proven in niche"). Recommend one, and give one change that would make it stronger. Then ask which draft to use, through `AskUserQuestion` when available (the three drafts as options, the recommended one first; the free-text field takes "none of them" and what to change), otherwise in chat.
 
 Say plainly, once: "השערים מסננים הוקים חלשים. מי מבין השלושה ינצח, יגידו המספרים אחרי הפרסום." Never claim a draft will go viral.
 

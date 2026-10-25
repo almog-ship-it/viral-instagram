@@ -14,7 +14,7 @@ A trend is a pattern that breaks out on **3 or more accounts in the same week, i
 
 ## Mode A — set up the schedule (first run or when asked)
 
-Use the app's scheduled-task capability to create a recurring task named `viral-instagram trend-watch`, on the profile's frequency (weekly → Sunday 08:00 in the user's timezone; ask the timezone if unknown). Task prompt: "הרץ את trend-watch על הפרופיל שלי ושלח את ההתראה." Confirm the time with the user before creating it. If the app has no scheduling, tell the user to run "מה הטרנדים השבוע" once a week.
+Use the app's scheduled-task capability to create a recurring task named `viral-instagram trend-watch`, on the profile's frequency (weekly → Sunday 08:00 in the user's timezone; ask the timezone if unknown). Task prompt: "הרץ את trend-watch על הפרופיל שלי ושלח את ההתראה." Confirm the time with the user before creating it, through `AskUserQuestion` when available (the default time first, then two alternatives such as ראשון 20:00 and שני 08:00), otherwise in chat. If the app has no scheduling, tell the user to run "מה הטרנדים השבוע" once a week.
 
 ## Mode B — the scan
 

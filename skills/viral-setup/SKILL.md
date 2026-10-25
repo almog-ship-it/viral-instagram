@@ -7,7 +7,12 @@ description: First-run setup for the viral-instagram kit. Checks that Composio a
 
 Prepare everything the other five skills need: live connections and a filled profile. Run once per user; rerun to change answers.
 
-Talk to the user in plain, friendly language, in Hebrew unless the user writes in another language. Never show tool names, file paths or JSON unless asked. Ask one question at a time.
+Talk to the user in plain, friendly language, in Hebrew unless the user writes in another language. Never show tool names, file paths or JSON unless asked.
+
+## Asking questions
+
+When the `AskUserQuestion` tool is available, use it for every question below marked **[choice]**: 2-4 options, the recommended one first with "(מומלץ)" when there is a clear default, `multiSelect` where noted. The tool adds an "other" field on its own, so never add one. Batch independent choice questions into one call (up to 4). Questions marked **[open]** stay as normal chat messages, one per message. Without the tool, ask everything in chat, one question per message, and offer the same options as examples.
+
 
 ## Where things live
 
@@ -52,36 +57,37 @@ Connect anything missing with `references/composio.md` → "Connecting a toolkit
 
 ## Step 4 — Niche data disclosure
 
-Read the disclosure in `references/composio.md` → "Disclosure" to the user, in their language, and ask if they want niche research and trend alerts. Record `niche_data: yes | no`. Respect a no without arguing.
+Read the disclosure in `references/composio.md` → "Disclosure" to the user, in their language, and ask if they want niche research and trend alerts **[choice]**: "כן, גם מחקר נישה וטרנדים" / "רק הנתונים שלי". Record `niche_data: yes | no`. Respect a no without arguing.
 
 ## Step 5 — Onboarding questions
 
-One per message. Offer examples so a non-technical user can answer fast.
+Open questions one per message, with examples so a non-technical user can answer fast. Choice questions in batches (see "Asking questions"): after question 2, ask 3 and 4 together; after question 8, ask 9 and 10 together.
 
-1. מה העסק שלך ובמה אתה עוזר? (משפט אחד)
-2. מי הקהל שאתה רוצה שיראה את התוכן? (מי הם, מה כואב להם)
-3. על אילו פורמטים לעבוד: רילז, קרוסלות, או שניהם? Suggest from the counts ("ראיתי 34 רילז ו-12 קרוסלות, אז שניהם?").
-4. מה המטרה: עוקבים, לידים או מכירות? ומה אתה רוצה שהצופה יעשה בסוף?
-5. **הקול שלך:** "תבחר 3 פוסטים שלך שהכי מרגישים כמוך, ותשלח לי קישור או תכתוב את המספר שלהם מהרשימה." Read their captions (and slides / transcript if available), infer how the user talks: pace, words they use, words they would never say, emoji habit, face or faceless. Show the inference in 3 lines and ask "נכון?". If the user prefers, ask these directly instead.
-6. **עמדות:** "2-3 דברים שאתה מאמין בהם ושחלק מהקהל שלך לא מסכים איתם." These are where the best hooks come from. Fine to skip.
-7. **הוכחות:** "מספרים, תוצאות או סיפורים אמיתיים שמותר לי להשתמש בהם בתסריטים. אם אין, נשאיר מקום ריק והמספר יגיע ממך." Never invent one later; only what is written here may appear in a draft.
-8. If `niche_data: yes`: 10-20 חשבונות שדומים לך או שאתה מעריך. אם אין לך רשימה, אציע. Propose a mix: about 4 direct (same niche, a bit ahead), 4 adjacent (same audience, different niche), 2-4 much larger accounts for format only. Prefer accounts within about 10x of the user's follower count. The user confirms each one; never add an account they did not approve. Include carousel-heavy accounts when carousels are in scope.
-9. If `niche_data: yes`: התראה על טרנדים: כל שבוע, כל שבועיים, או בלי? מייל או רק קובץ? (Connect Gmail now if they chose email.)
-10. מה אתה **לא** מוכן לעשות בתוכן? (למשל: לרקוד, לצלם פנים, טרנדים של סאונד)
+1. **[open]** מה העסק שלך ובמה אתה עוזר? (משפט אחד)
+2. **[open]** מי הקהל שאתה רוצה שיראה את התוכן? (מי הם, מה כואב להם)
+3. **[choice]** על אילו פורמטים לעבוד? Options: רילז / קרוסלות / שניהם. Put the counts in the option descriptions and mark the one the counts suggest as recommended ("ראיתי 34 רילז ו-12 קרוסלות").
+4. **[choice, multiSelect]** מה המטרה? Options: עוקבים / לידים / מכירות. Then, only if their posts don't already show it, **[choice]** מה הצופה עושה בסוף? Options: מגיב מילה ומקבל משהו בפרטי / שומר את הפוסט / לוחץ על הלינק בביו / עוקב. If their captions already show one ending (for example a trigger word in most of them), state it and skip the question.
+5. **[open] הקול שלך:** "תבחר 3 פוסטים שלך שהכי מרגישים כמוך, ותשלח לי קישור או תכתוב את המספר שלהם מהרשימה." Read their captions (and slides / transcript if available), infer how the user talks: pace, words they use, words they would never say, emoji habit, face or faceless. Show the inference in 3 lines, then **[choice]** "זה אתה?": נכון / נכון, אבל אני רוצה לתקן משהו / לא, בוא נעשה את זה בשאלות. If the user wants to fix or redo it, ask in chat.
+6. **[open] עמדות:** "2-3 דברים שאתה מאמין בהם ושחלק מהקהל שלך לא מסכים איתם." These are where the best hooks come from. Fine to skip.
+7. **[open] הוכחות:** "מספרים, תוצאות או סיפורים אמיתיים שמותר לי להשתמש בהם בתסריטים. אם אין, נשאיר מקום ריק והמספר יגיע ממך." Never invent one later; only what is written here may appear in a draft.
+8. **[open]** If `niche_data: yes`: 10-20 חשבונות שדומים לך או שאתה מעריך. אם אין לך רשימה, אציע. Propose a mix: about 4 direct (same niche, a bit ahead), 4 adjacent (same audience, different niche), 2-4 much larger accounts for format only. Prefer accounts within about 10x of the user's follower count. The user confirms each one; never add an account they did not approve. When you propose accounts, use **[choice, multiSelect]** (up to 4 accounts per question, follower count in each description). Include carousel-heavy accounts when carousels are in scope.
+9. If `niche_data: yes`: **[choice]** התראה על טרנדים: כל שבוע / כל שבועיים / בלי. And **[choice]** איך לקבל אותה: מייל / רק קובץ בתיקייה. (Connect Gmail now if they chose email.)
+10. **[choice, multiSelect]** מה אתה **לא** מוכן לעשות בתוכן? Options: לרקוד / לצלם פנים / ליפסינק / סאונדים טרנדיים. The free-text field covers anything else.
 
 ## Step 6 — Write the profile
 
-Write `viral-instagram/profile.md` from `references/profile-template.md`. Create an empty `viral-instagram/log.md` with the header from `references/log-template.md`. Read the profile back in 5 short lines and ask if anything is wrong.
+Write `viral-instagram/profile.md` from `references/profile-template.md`. Create an empty `viral-instagram/log.md` with the header from `references/log-template.md`. Read the profile back in 5 short lines and ask if anything is wrong **[choice]**: הכל נכון / יש מה לתקן.
 
 ## Step 7 — Hand off
 
-End with one next action: "השלב הבא: לנתח את התוכן שלך. להתחיל?" → my-content-audit.
+End with one next action **[choice]**: "השלב הבא: לנתח את התוכן שלך. להתחיל?" כן, להתחיל / אחר כך. Yes → my-content-audit.
 
 ## Pre-flight before finishing
 
 - [ ] Instagram ACTIVE and the account is professional
 - [ ] Disclosure read; `niche_data` recorded
 - [ ] Every question answered or marked skipped; at least one format chosen
+- [ ] Choice questions asked through `AskUserQuestion` when it was available
 - [ ] Voice inference confirmed by the user
 - [ ] "Proof I can use" contains only what the user stated
 - [ ] Reference accounts confirmed one by one, bare usernames without @

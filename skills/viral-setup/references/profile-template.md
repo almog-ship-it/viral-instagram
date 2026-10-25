@@ -21,7 +21,7 @@ language: <he | en | ...>
 ## Business
 what: <one sentence>
 audience: <who, and what hurts them>
-goal: followers | leads | sales
+goal: <one or more of: followers, leads, sales>
 cta: <what the viewer should do at the end>
 
 ## Voice
