@@ -40,7 +40,7 @@ Record the answer as `niche_data: yes | no` in the profile. If `no`, niche-resea
 
 | Slug | Used by | Notes |
 |---|---|---|
-| `INSTAGRAM_GET_USER_INFO` | setup | `ig_user_id: "me"` |
+| `INSTAGRAM_GET_USER_INFO` | setup | `ig_user_id: "me"`; add `name,biography,website` to read the niche (`account-discovery.md`) |
 | `INSTAGRAM_GET_IG_USER_MEDIA` | audit | `ig_user_id: "me"`, `limit: 100`; rows under `data.data`, cursor under `data.paging.cursors.after` |
 | `INSTAGRAM_GET_IG_MEDIA_INSIGHTS` | audit | `metric` must be an array; requires 1,000+ followers |
 | `INSTAGRAM_GET_IG_MEDIA_CHILDREN` | audit | slides of a carousel: `media_url` per slide |

@@ -1,6 +1,6 @@
 ---
 name: viral-setup
-description: First-run setup for the viral-instagram kit. Checks that Composio and Instagram are connected (Gmail and Apify optional), walks the user through connecting what is missing, explains where niche data comes from, then asks the onboarding questions (business, formats, voice, positions, proof) and writes the profile every other viral-instagram skill reads. Use when the user says "תגדיר לי את ערכת האינסטגרם", "בוא נתחיל", "setup viral instagram", "connect my instagram", "תשנה את הפרופיל", or when any other viral-instagram skill finds no profile.
+description: First-run setup for the viral-instagram kit. Checks that Composio and Instagram are connected (Gmail and Apify optional), walks the user through connecting what is missing, explains where niche data comes from, reads the user's own profile to infer niche, audience and market and confirms them, finds similar accounts on the web for approval, then asks the remaining onboarding questions (formats, voice, positions, proof) and writes the profile every other viral-instagram skill reads. Use when the user says "תגדיר לי את ערכת האינסטגרם", "בוא נתחיל", "setup viral instagram", "connect my instagram", "תשנה את הפרופיל", or when any other viral-instagram skill finds no profile.
 ---
 
 # viral-setup
@@ -49,28 +49,32 @@ Connect anything missing with `references/composio.md` → "Connecting a toolkit
 
 ## Step 3 — Check the Instagram account
 
-`INSTAGRAM_GET_USER_INFO` (`ig_user_id: "me"`, fields `username,account_type,followers_count,media_count`), then one page of `INSTAGRAM_GET_IG_USER_MEDIA` (limit 100, fields `id,media_type,media_product_type`) to count reels and carousels.
+`INSTAGRAM_GET_USER_INFO` (`ig_user_id: "me"`, fields `username,name,biography,website,account_type,followers_count,media_count`), then one page of `INSTAGRAM_GET_IG_USER_MEDIA` (limit 100, fields `id,caption,media_type,media_product_type,timestamp`) to count reels and carousels and to read captions in Step 4.
 
 - Personal account → explain the switch (`references/composio.md` → "Personal account"), then reconnect.
 - Under 1,000 followers → say once: "יש לך פחות מ-1,000 עוקבים, אז אינסטגרם לא נותן את הנתונים העמוקים. ננתח לפי צפיות, שמירות, שיתופים ותגובות. זה מספיק כדי למצוא דפוסים." Record `deep_insights: no`.
 - Under 8 posts in a format → record it; the audit will lean on niche research for that format.
 
-## Step 4 — Niche data disclosure
+## Step 4 — Read the profile
+
+Follow `references/account-discovery.md` sections 1-2: infer niche, audience, market and offer from the bio, the captions and the website, tell the user what you saw and where, and confirm it **[choice]**. The confirmed answers fill `## Business` (`what`, `audience`, `market`) with `inferred_from: profile`. If the signal is thin, ask questions 1-2 below instead.
+
+## Step 4b — Niche data disclosure
 
 Read the disclosure in `references/composio.md` → "Disclosure" to the user, in their language, and ask if they want niche research and trend alerts **[choice]**: "כן, גם מחקר נישה וטרנדים" / "רק הנתונים שלי". Record `niche_data: yes | no`. Respect a no without arguing.
 
 ## Step 5 — Onboarding questions
 
-Open questions one per message, with examples so a non-technical user can answer fast. Choice questions in batches (see "Asking questions"): after question 2, ask 3 and 4 together; after question 8, ask 9 and 10 together.
+Open questions one per message, with examples so a non-technical user can answer fast. Choice questions in batches (see "Asking questions"): ask 3 and 4 together; after question 8, ask 9 and 10 together.
 
-1. **[open]** מה העסק שלך ובמה אתה עוזר? (משפט אחד)
-2. **[open]** מי הקהל שאתה רוצה שיראה את התוכן? (מי הם, מה כואב להם)
+1. **[open]** Only if Step 4 could not infer it: מה העסק שלך ובמה אתה עוזר? (משפט אחד)
+2. **[open]** Only if Step 4 could not infer it: מי הקהל שאתה רוצה שיראה את התוכן? (מי הם, מה כואב להם)
 3. **[choice]** על אילו פורמטים לעבוד? Options: רילז / קרוסלות / שניהם. Put the counts in the option descriptions and mark the one the counts suggest as recommended ("ראיתי 34 רילז ו-12 קרוסלות").
 4. **[choice, multiSelect]** מה המטרה? Options: עוקבים / לידים / מכירות. Then, only if their posts don't already show it, **[choice]** מה הצופה עושה בסוף? Options: מגיב מילה ומקבל משהו בפרטי / שומר את הפוסט / לוחץ על הלינק בביו / עוקב. If their captions already show one ending (for example a trigger word in most of them), state it and skip the question.
 5. **[open] הקול שלך:** "תבחר 3 פוסטים שלך שהכי מרגישים כמוך, ותשלח לי קישור או תכתוב את המספר שלהם מהרשימה." Read their captions (and slides / transcript if available), infer how the user talks: pace, words they use, words they would never say, emoji habit, face or faceless. Show the inference in 3 lines, then **[choice]** "זה אתה?": נכון / נכון, אבל אני רוצה לתקן משהו / לא, בוא נעשה את זה בשאלות. If the user wants to fix or redo it, ask in chat.
 6. **[open] עמדות:** "2-3 דברים שאתה מאמין בהם ושחלק מהקהל שלך לא מסכים איתם." These are where the best hooks come from. Fine to skip.
 7. **[open] הוכחות:** "מספרים, תוצאות או סיפורים אמיתיים שמותר לי להשתמש בהם בתסריטים. אם אין, נשאיר מקום ריק והמספר יגיע ממך." Never invent one later; only what is written here may appear in a draft.
-8. **[open]** If `niche_data: yes`: 10-20 חשבונות שדומים לך או שאתה מעריך. אם אין לך רשימה, אציע. Propose a mix: about 4 direct (same niche, a bit ahead), 4 adjacent (same audience, different niche), 2-4 much larger accounts for format only. Prefer accounts within about 10x of the user's follower count. The user confirms each one; never add an account they did not approve. When you propose accounts, use **[choice, multiSelect]** (up to 4 accounts per question, follower count in each description). Include carousel-heavy accounts when carousels are in scope.
+8. If `niche_data: yes`: reference accounts. Ask **[choice]** "לחפש ברשת חשבונות דומים? אביא לך רשימה לאישור." כן, לחפש (מומלץ) / יש לי רשימה משלי / לדלג. Yes → search the web and vet candidates per `references/account-discovery.md` sections 3-5, then bring them for approval **[choice, multiSelect]**. Own list → **[open]** 10-20 usernames in chat. Include carousel-heavy accounts when carousels are in scope. Never add an account the user did not pick.
 9. If `niche_data: yes`: **[choice]** התראה על טרנדים: כל שבוע / כל שבועיים / בלי. And **[choice]** איך לקבל אותה: מייל / רק קובץ בתיקייה. (Connect Gmail now if they chose email.)
 10. **[choice, multiSelect]** מה אתה **לא** מוכן לעשות בתוכן? Options: לרקוד / לצלם פנים / ליפסינק / סאונדים טרנדיים. The free-text field covers anything else.
 
@@ -90,5 +94,6 @@ End with one next action **[choice]**: "השלב הבא: לנתח את התוכ�
 - [ ] Choice questions asked through `AskUserQuestion` when it was available
 - [ ] Voice inference confirmed by the user
 - [ ] "Proof I can use" contains only what the user stated
-- [ ] Reference accounts confirmed one by one, bare usernames without @
+- [ ] Niche, audience and market shown to the user with their source and confirmed
+- [ ] Reference accounts found on the web (or given by the user) and picked by the user, bare usernames without @
 - [ ] profile.md and log.md written; profile read back

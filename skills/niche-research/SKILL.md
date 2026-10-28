@@ -13,7 +13,7 @@ Run it monthly, not weekly: formulas last a season. Weekly movement is trend-wat
 
 1. Read `viral-instagram/profile.md`. If missing → viral-setup. Research only the formats under `## Formats`.
 2. `niche_data: no` → say niche research is off by the user's choice, offer to turn it on (re-read the disclosure from `references/composio.md`; the choice through `AskUserQuestion` when available: "כן, להפעיל" / "לא עכשיו"), and stop.
-3. At least 8 reference accounts. Fewer → ask for more, or suggest some and get approval. When suggesting, use `AskUserQuestion` when available with `multiSelect` (up to 4 accounts per question, follower count in each description); never add an account the user did not pick.
+3. At least 8 reference accounts. Fewer → offer to find more on the web **[choice]**: כן, לחפש (מומלץ) / אוסיף בעצמי. Search and vet per `references/account-discovery.md` sections 3-5 using the niche, audience and market in the profile, then bring candidates for approval through `AskUserQuestion` when available with `multiSelect` (up to 4 accounts per question, group, `~followers` and why it fits in each description); never add an account the user did not pick.
 4. First run only: repeat the disclosure in one short line.
 
 ## Step 1 — Estimate and confirm cost

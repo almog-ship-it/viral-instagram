@@ -21,6 +21,8 @@ language: <he | en | ...>
 ## Business
 what: <one sentence>
 audience: <who, and what hurts them>
+market: <country and language of the content>
+inferred_from: profile | answers
 goal: <one or more of: followers, leads, sales>
 cta: <what the viewer should do at the end>
 
