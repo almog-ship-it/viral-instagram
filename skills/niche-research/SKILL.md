@@ -12,13 +12,13 @@ Run it monthly, not weekly: formulas last a season. Weekly movement is trend-wat
 ## Preflight
 
 1. Read `viral-instagram/profile.md`. If missing → viral-setup. Research only the formats under `## Formats`.
-2. `niche_data: no` → say niche research is off by the user's choice, offer to turn it on (re-read the disclosure from `references/composio.md`), and stop.
-3. At least 8 reference accounts. Fewer → ask for more, or suggest some and get approval.
+2. `niche_data: no` → say niche research is off by the user's choice, offer to turn it on (re-read the disclosure from `references/composio.md`; the choice through `AskUserQuestion` when available: "כן, להפעיל" / "לא עכשיו"), and stop.
+3. At least 8 reference accounts. Fewer → ask for more, or suggest some and get approval. When suggesting, use `AskUserQuestion` when available with `multiSelect` (up to 4 accounts per question, follower count in each description); never add an account the user did not pick.
 4. First run only: repeat the disclosure in one short line.
 
 ## Step 1 — Estimate and confirm cost
 
-Accounts × 3 calls × $0.015 (≈ 30 posts each). If `apify: active`, add transcripts for up to 15 reel outliers (~$0.05 × average minutes). Tell the user the total in one line and wait for yes.
+Accounts × 3 calls × $0.015 (≈ 30 posts each). If `apify: active`, add transcripts for up to 15 reel outliers (~$0.05 × average minutes). Tell the user the total in one line and wait for yes, through `AskUserQuestion` when available ("כן, להריץ" first; with Apify, also "בלי תמלולים" and its lower total), otherwise in chat.
 
 ## Step 2 — Pull posts
 

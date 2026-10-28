@@ -9,7 +9,7 @@ Turn two studies into one page of rules the user (and viral-script) can follow. 
 
 ## Preflight
 
-Read `viral-instagram/profile.md`, the latest `viral-instagram/audit/*.md`, the latest `viral-instagram/research/*.md` and `viral-instagram/log.md`. A playbook rule whose logged posts came out `below` three times or more gets demoted to "Stop doing" or rewritten, and the playbook says why. If either study is missing, say which one and offer to run it. If only one exists, build from it and mark the playbook `based_on: audit only` or `research only`.
+Read `viral-instagram/profile.md`, the latest `viral-instagram/audit/*.md`, the latest `viral-instagram/research/*.md` and `viral-instagram/log.md`. A playbook rule whose logged posts came out `below` three times or more gets demoted to "Stop doing" or rewritten, and the playbook says why. If either study is missing, say which one and offer to run it, through `AskUserQuestion` when available (run it now first, then "לבנות רק ממה שיש"), otherwise in chat. If only one exists, build from it and mark the playbook `based_on: audit only` or `research only`.
 
 ## Weighing evidence
 
