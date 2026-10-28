@@ -48,8 +48,20 @@ Aim for 10-16 candidates in three groups: direct (same niche, a bit ahead), adja
 
 Expect small, non-English markets to yield fewer confirmed handles: many creators never link their Instagram from their own pages. Say how many people were found and how many handles were confirmed, so a short list reads as a web limit, not as an empty niche.
 
-Save only what the user picked, as bare usernames without @. Under 8 picked → offer one more search round on the weakest group, or continue with what there is and say the research will be thinner.
+Save only what the user picked, as bare usernames without @. Under 8 confirmed before asking → run section 6 first. Under 8 picked → offer one more search round on the weakest group, or continue with what there is and say the research will be thinner.
+
+## 6. Fallback: Instagram's own search (Composio, cost confirmed)
+
+Run only when the web confirmed fewer than 8 handles and `niche_data: yes`. It uses the same unofficial public-data tool as niche-research, so the disclosure already covers it.
+
+1. Pick 4-6 search terms from the confirmed niche, audience and market, in the content language (for example "בינה מלאכותית לעסקים", "קלוד", "AI לעסקים קטנים"). Include one or two hashtags the user's own captions use.
+2. Estimate: terms × 1 call + up to 12 profile checks, × $0.015. Typical total about $0.20-0.30. Tell the user what the web found, why you suggest this, and the total, and ask **[choice]**: כן, לחפש באינסטגרם (מומלץ) / להמשיך עם מה שיש. Wait for yes.
+3. Per term, one `JUST_ONE_API_INSTAGRAM_SEARCH_REELS` call (`keyword`; no paging). Authors are under `data.data.data.items[].user` (`username`, `full_name`, `is_private`); the reel has `play_count`, `caption.text`, `taken_at`. Skip private accounts, the user's own handle and accounts already found on the web.
+4. Rank authors by how often they appear across terms, then by audience fit read from `full_name` and the captions. For the top 8-12 not already on the list, one `JUST_ONE_API_INSTAGRAM_GET_USER_DETAIL` each for `biography` and follower count, then vet them with the checks in section 4.
+5. Merge with the web candidates and bring the whole list for approval as in section 5, marking where each was found (רשת / חיפוש באינסטגרם).
+
+Tested 28/10/2026: one search for "בינה מלאכותית לעסקים" returned 12 reels by 12 different Hebrew AI creators, where the web confirmed none.
 
 ## When there is no web search
 
-Say so in one line and ask the user for 8-20 accounts in chat, as before.
+Say so in one line, offer section 6 (Instagram's own search, with the cost), and otherwise ask the user for 8-20 accounts in chat.

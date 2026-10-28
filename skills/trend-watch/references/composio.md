@@ -67,6 +67,7 @@ Each may come back empty for small accounts; empty is valid, not an error.
 |---|---|---|
 | `JUST_ONE_API_INSTAGRAM_GET_USER_DETAIL` | `username` | profile, follower count |
 | `JUST_ONE_API_INSTAGRAM_GET_USER_POSTS` | `username`, `pagination_token` | 12 posts per call; pass the returned `pagination_token` for the next page |
+| `JUST_ONE_API_INSTAGRAM_SEARCH_REELS` | `keyword`, `pagination_token` | 12 reels per call; author under `items[].user.username`. Discovery fallback only (`account-discovery.md` section 6) |
 
 Items are under `data.data.data.items` (three `data` levels) and the next-page token under `data.data.pagination_token`. Check the item count on the first page before paging: a wrong path reads as an empty account and still costs the call. Fields (confirm on the first run; log any that are missing):
 - `product_type`: `clips` = reel · `carousel_container` = carousel · `feed` = single image
